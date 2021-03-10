@@ -1,4 +1,4 @@
-﻿using Crayon;
+using Crayon;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Logging;
 using NuGet.Versioning;
@@ -28,7 +28,7 @@ namespace Stryker.CLI
         }
 
         /// <summary>
-        /// Analyses the arguments and displays an interface to the user. Kicks off the program.
+        /// Analyzes the arguments and displays an interface to the user. Kicks off the program.
         /// </summary>
         /// <param name="args">User input</param>
         public int Run(string[] args)
