@@ -413,7 +413,7 @@ namespace Stryker.Core.TestRunners.VsTest
         private string GenerateRunSettings(int? timeout, bool forMutantTesting, bool forCoverage, Dictionary<int, IList<Guid>> mutantTestsMap)
         {
             var projectAnalyzerResult = _projectInfo.TestProjectAnalyzerResults.FirstOrDefault();
-            var targetFramework = projectAnalyzerResult.GetTargetFrameworkAndVersion().Framework;
+            var targetFramework = projectAnalyzerResult.GetTargetFramework();
 
             var needCoverage = forCoverage && NeedCoverage();
             var dataCollectorSettings = (forMutantTesting || forCoverage) ? CoverageCollector.GetVsTestSettings(needCoverage, mutantTestsMap, CodeInjection.HelperNamespace) : "";
