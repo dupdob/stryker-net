@@ -9,6 +9,7 @@ using Stryker.Core.Mutators;
 using Stryker.Core.Options;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using ILogger = Microsoft.Extensions.Logging.ILogger;
 
@@ -82,7 +83,7 @@ namespace Stryker.Core.Mutants
             if (mutationContext.HasStatementLevelMutant && _options?.DevMode == true)
             {
                 // some mutants where not injected for some reason, they should be reviewed to understand why.
-                Logger.LogError($"Several mutants were not injected in the project : {mutationContext.BlockLevelControlledMutations.Count + mutationContext.StatementLevelControlledMutations.Count}");
+                Logger.LogError($"{mutationContext.BlockLevelControlledMutations.Count + mutationContext.StatementLevelControlledMutations.Count} mutants were not injected in {Path.GetFileName(input.SyntaxTree.FilePath)}");
             }
             // mark remaining mutants as CompileError
             foreach (var mutant in mutationContext.StatementLevelControlledMutations.Union(mutationContext.BlockLevelControlledMutations))
